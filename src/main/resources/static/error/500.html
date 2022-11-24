@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/images/adIcon.jpg">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>Spring Boot | 500</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="headMsg">Something is not write. Please check below message for details.</div>
+            <div>
+                <p th:text="${errorMessage}"></p>
+            </div>
+        </div>
+    </body>
+    <style>
+        #container{
+            position:absolute;
+            top:0%;
+            left:10%;
+            width:80%;
+        }
+    </style>
+</html>

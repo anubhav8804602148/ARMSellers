@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/images/adIcon.jpg">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>Spring Boot | Home</title>
+</head>
+<body>
+    <div id="headMsg">
+        Welcome to my demo app!!<br>
+        <div th:if="${known}">
+            <p th:text="${name}"></p>
+        </div><br>
+        <div th:unless="${known}">
+            Ahh . . . What was your name again??<br><br>
+            <input id="userName" type="text">
+        </div>
+    </div>
+</body>
+<script>
+    $("#userName").on('keypress',
+        function(e){
+            if(e.which==13){
+                document.location = "home?name="+$("#userName").val();
+            }
+        }
+    );
+</script>
+<style>
+        #userName{
+
+        }
+        #headMsg{
+            position:absolute;
+            top:30%;
+            left:40%;
+        }
+        #askName{
+            display:none;
+        }
+</style>
+</html>
