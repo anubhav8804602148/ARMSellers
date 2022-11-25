@@ -2,7 +2,6 @@ package com.auth.demo;
 
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class AuthenticationManagerDemoApplicationTests {
+class ARMSellersApplicationTests {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -28,7 +27,7 @@ class AuthenticationManagerDemoApplicationTests {
 
 	@Test
 	void contextLoads() {
-		new AuthenticationManagerDemoApplication();
+		new ARMSellersApplication();
 	}
 
 	@Test
@@ -54,7 +53,7 @@ class AuthenticationManagerDemoApplicationTests {
 	void checkRequestByPathVariable2() throws Exception{
 		int num = random.nextInt(20);
 		int fact = 1;
-		for(int i=2;i<=num;i++) fact*=num;
+		for(int i=2;i<=num;i++) fact*=i;
 		mockMvc.perform(get("/getFactorial/"+num))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$", Matchers.equalTo(fact)));

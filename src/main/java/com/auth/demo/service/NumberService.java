@@ -10,6 +10,10 @@ import java.util.Random;
 @Service
 public class NumberService {
 
+    @Bean
+    public Random getRandom(){
+        return new Random();
+    }
     public BigInteger factorial(int num){
         BigInteger curr = new BigInteger("1");
         while(num>1){
