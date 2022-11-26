@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/images/ArmsIcon.png">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>ARMSeller | Login</title>
+</head>
+<body>
+    <form id="user-login-form" class="center-form" th:object="${userLogin}" th:action="@{/login}" method="POST">
+        <div class="form-header-msg">
+            <p th:text="${error}"></p>
+        </div>
+        <div class="form-single-row">
+            <label for="email" value>Username</label>
+            <input id="email" type="text" th:field="*{email}">
+        </div>
+        <div class="form-single-row">
+            <label for="password">Password</label>
+            <input id="password" type="password" th:field="*{password}">
+        </div>
+        <div class="form-single-row">
+            <input id="acceptTerms" type="checkbox">
+            <label for="acceptTerms">
+                By checking this checkbox, you agree to our <a href="/legal?item=termsAndConditions">Terms and Conditions</a>
+            </label>
+        </div>
+        <div class="form-action-row">
+            <input id="resetForm" type="reset" class="reset-btn" /><input id="submitForm" type="submit" class="submit-btn"/>
+        </div>
+    </form>
+
+</body>
+<style>
+    body{
+        background-image: url('images/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .reset-btn{
+        background-color:#ff2222;
+    }
+    .submit-btn{
+        background-color:green;
+    }
+    .center-form{
+        position:absolute;
+        top:30%;
+        left:40%;
+    }
+    .center-form{
+        display:table;
+    }
+    .form-single-row{
+        display:table-row;
+    }
+    .form-single-row label{
+        display:table-cell;
+        padding : 5;
+        tex-align:right;
+    }
+    .form-single-row input{
+        display:table-cell;
+    }
+
+</style>
+</html>

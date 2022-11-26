@@ -1,11 +1,8 @@
-package com.auth.demo.controllers;
+package com.arm.seller.controllers;
 
-import com.auth.demo.service.NumberService;
+import com.arm.seller.service.NumberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigInteger;
 
 @RestController
 public class ApplicationRestController {

@@ -1,4 +1,4 @@
-package com.auth.demo;
+package com.arm.seller;
 
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -51,7 +51,7 @@ class ARMSellersApplicationTests {
 
 	@Test
 	void checkRequestByPathVariable2() throws Exception{
-		int num = random.nextInt(20);
+		int num = random.nextInt(12);
 		int fact = 1;
 		for(int i=2;i<=num;i++) fact*=i;
 		mockMvc.perform(get("/getFactorial/"+num))

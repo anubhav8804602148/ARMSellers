@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="/images/ArmsIcon.png">
+  <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+  <title>ARMSeller | Register</title>
+</head>
+<body>
+<form id="user-register-form" class="center-form" th:object="${userRegister}" action="processRegisterForm" method="POST">
+  <div class="form-single-row">
+    <label for="firstName" value>First Name</label>
+    <input id="firstName" type="text" th:field="*{fname}">
+  </div>
+  <div class="form-single-row">
+    <label for="lastName" value>Last Name</label>
+    <input id="lastName" type="text" th:field="*{lname}">
+  </div>
+  <div class="form-single-row">
+    <label for="userEmailId" value>Email Id</label>
+    <input id="userEmailId" type="text" th:field="*{email}">
+  </div>
+  <div class="form-single-row">
+    <label for="password" value>Password</label>
+    <input id="password" type="password" th:field="*{password}">
+  </div>
+  <div class="form-single-row">
+    <label for="confirmPassword" value>Confirm Password</label>
+    <input id="confirmPassword" type="password">
+  </div>
+  <div class="form-single-row">
+    <label for="profilePic" value>Choose you display Pic</label>
+    <input id="profilePic" type="file"  accept="image/*" th:field="*{userProfilePic}">
+  </div>
+  <div class="form-single-row">
+    <input id="acceptTerms" type="checkbox" colspan="2">
+    <label for="acceptTerms">
+      By checking this checkbox, you agree to our <a href="/legal?item=termsAndConditions">Terms and Conditions</a>
+    </label>
+  </div>
+  <div class="form-action-row">
+    <input id="resetForm" type="reset" class="reset-btn" /><input id="submitForm" type="submit" class="submit-btn"/>
+  </div>
+</form>
+</body>
+<style>
+    body{
+        background-image: url('images/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .reset-btn{
+        background-color:#ff2222;
+    }
+    .submit-btn{
+        background-color:green;
+    }
+    .center-form{
+        position:absolute;
+        top:30%;
+        left:40%;
+    }
+    .center-form{
+        display:table;
+    }
+    .form-single-row{
+        display:table-row;
+    }
+    .form-single-row label{
+        display:table-cell;
+        padding : 5;
+        tex-align:right;
+    }
+    .form-single-row input{
+        display:table-cell;
+    }
+
+</style>
+</html>

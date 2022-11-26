@@ -1,4 +1,4 @@
-package com.auth.demo.service;
+package com.arm.seller.service;
 
 
 import org.springframework.context.annotation.Bean;

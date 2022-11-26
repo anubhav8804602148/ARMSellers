@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.blog.app</groupId>
-	<artifactId>AuthenticationManagerDemo</artifactId>
+	<artifactId>ARMSellers</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AuthenticationManagerDemo</name>
-	<description>AuthenticationManagerDemo</description>
+	<name>ARMSellers</name>
+	<description>A: Apparels, R: Residencies and M : Meal Sellers app</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
