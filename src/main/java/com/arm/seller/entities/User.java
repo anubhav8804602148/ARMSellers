@@ -24,7 +24,7 @@ public class User {
     private List<Role> roles;
     private boolean expired=false;
     private boolean locked=false;
-    private byte[] userProfilePic = null;
+    private String userProfilePic = null;
 
 
     public User(){
@@ -103,14 +103,17 @@ public class User {
         this.locked = locked;
     }
 
-    public byte[] getUserProfilePic() {
+    public String getUserProfilePic() {
         return userProfilePic;
     }
 
-    public void setUserProfilePic(byte[] userProfilePic) {
+    public void setUserProfilePic(String userProfilePic) {
         this.userProfilePic = userProfilePic;
     }
 
+    public String getFullName(){
+        return fname+" "+lname;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,15 +1,19 @@
 package com.arm.seller.controllers;
 
 import com.arm.seller.entities.User;
+import com.arm.seller.service.CustomUtilService;
 import com.arm.seller.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.synchronoss.cloud.nio.multipart.Multipart;
 
 import java.util.stream.Stream;
 
@@ -64,7 +68,7 @@ public class ApplicationController {
         return "registerUser";
     }
 
-    @PostMapping(value = "/processRegisterForm", consumes = {MediaType.ALL_VALUE})
+    @PostMapping(value = "/processRegisterForm", consumes = {"application/json","application/x-www-form-urlencoded"})
     public String processUserRegistration(User user){
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         userService.createNewUser(user);

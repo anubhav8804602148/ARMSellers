@@ -17,6 +17,14 @@ public class Authority {
     public Authority() {
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public GrantedAuthority getAuthority() {
         return authority;
     }

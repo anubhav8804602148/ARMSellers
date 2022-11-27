@@ -19,14 +19,12 @@
             <label for="password">Password</label>
             <input id="password" type="password" th:field="*{password}">
         </div>
-        <div class="form-single-row">
-            <input id="acceptTerms" type="checkbox">
-            <label for="acceptTerms">
-                By checking this checkbox, you agree to our <a href="/legal?item=termsAndConditions">Terms and Conditions</a>
-            </label>
-        </div>
         <div class="form-action-row">
             <input id="resetForm" type="reset" class="reset-btn" /><input id="submitForm" type="submit" class="submit-btn"/>
+        </div>
+        <div class="form-single-row">
+            <label>Not Registered Yet?</label>
+            <label><a href="registerUser">Register Now</a></label>
         </div>
     </form>
 

@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .requiresChannel(channel -> channel.anyRequest().requiresSecure())
                 .authorizeRequests()
                 .antMatchers("/home").authenticated()
+                .antMatchers("/rolesManager").hasAuthority("ADMIN_CREATE")
                 .antMatchers("/login").permitAll()
                 .antMatchers("/logout").permitAll()
                 .antMatchers("/error").permitAll()

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/images/ArmsIcon.png">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>ARMSeller | Roles</title>
+</head>
+<body>
+    <table id="roleManagerTable">
+        <tr class="manager-row">
+            <td class="manager-cell">
+                <table id="allAuthoritiesTable">
+                    <thead>
+                        <tr>
+                            <td>Authority Id</td><td>Authority Name</td><td><span></span><span></span></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="authority : ${allAuthorities}">
+                            <td><span th:text="${authority.id}"></span></td>
+                            <td><span th:text="${authority.authority}"></span></td>
+                            <td><span class="editAuthorityBtn"><img class="icon" src="/images/editIcon.png"></span></td>
+                            <td><span class="deleteAuthorityBtn"><img class="icon" src="/images/deleteIcon.png"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td class="manager-cell">
+                <table id="allRolesTable">
+                    <thead>
+                        <tr>
+                            <td>Role Id</td><td>Role Name</td><td><span></span></td><td><span></span></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="role : ${allRoles}">
+                            <td><span th:text="${role.id}"></span></td>
+                            <td><span th:text="${role.name}"></span></td>
+                            <td><span class="editAuthorityBtn"><img class="icon" src="/images/editIcon.png"></span></td>
+                            <td><span class="deleteAuthorityBtn"><img class="icon" src="/images/deleteIcon.png"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr class="manager-row">
+            <td colspan="2" class="manager-cell">
+                <table id="allUsersTable">
+                    <thead>
+                        <tr>
+                            <td>User Id</td><td>User Name/Email</td><td>Full Name</td><td>User Pic</td><td></td><td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user : ${allUsers}">
+                            <td><span th:text="${user.id}"></span></td>
+                            <td><span th:text="${user.email}"></span></td>
+                            <td><span th:text="${user.fullName}"></span></td>
+                            <td><img th:src="${user.img}"></td>
+                            <td><span class="editAuthorityBtn"><img class="icon" src="/images/editIcon.png"></span></td>
+                            <td><span class="deleteAuthorityBtn"><img class="icon" src="/images/deleteIcon.png"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+</script>
+<style>
+    #allRolesTable{
+        position:relative;
+        top:0px;
+        left:0px;
+        width:100%;
+    }
+    img{
+        max-width:100px;
+    }
+    #allAuthoritiesTable{
+        position:relative;
+        top:0px;
+        left:0px;
+        width:100%;
+    }
+    #allUsersTable{
+        position:relative;
+        top:0px;
+        left:0px;
+        width:100%;
+    }
+    #roleManagerTable{
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:100%;
+    }
+    tr,td{
+        border:1px solid black;
+    }
+    .manager-cell{
+        border:5px solid black;
+        background-color:#eeeeee;
+    }
+    .manager-row{
+        border:5px solid black;
+    }
+    .icon{
+        size:20px;
+        width:20px;
+        height:20px;
+    }
+    .icon:hover{
+        background-color:#aaaaaa;
+    }
+    body{
+        background-image: url('images/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+</html>

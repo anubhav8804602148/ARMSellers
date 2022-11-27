@@ -7,7 +7,7 @@
   <title>ARMSeller | Register</title>
 </head>
 <body>
-<form id="user-register-form" class="center-form" th:object="${userRegister}" action="processRegisterForm" method="POST">
+<form id="user-register-form" class="center-form" th:object="${userRegister}" th:action="@{/processRegisterForm/}" method="POST">
   <div class="form-single-row">
     <label for="firstName" value>First Name</label>
     <input id="firstName" type="text" th:field="*{fname}">
@@ -30,7 +30,9 @@
   </div>
   <div class="form-single-row">
     <label for="profilePic" value>Choose you display Pic</label>
-    <input id="profilePic" type="file"  accept="image/*" th:field="*{userProfilePic}">
+    <input id="profilePic" type="file" accept="image/*">
+    <img id="displayProfilePic" th:name="userProfilePic" >
+    <input type="hidden" id="displayProfilePicTxt" th:field="*{userProfilePic}">
   </div>
   <div class="form-single-row">
     <input id="acceptTerms" type="checkbox" colspan="2">
@@ -41,6 +43,10 @@
   <div class="form-action-row">
     <input id="resetForm" type="reset" class="reset-btn" /><input id="submitForm" type="submit" class="submit-btn"/>
   </div>
+  <div class="form-single-row">
+    <label>Already Registered?</label>
+    <label><a href="login">Login</a></label>
+  </div>
 </form>
 </body>
 <style>
@@ -48,6 +54,9 @@
         background-image: url('images/background.jpg');
         background-size: cover;
         background-repeat: no-repeat;
+    }
+    #displayProfilePic{
+        width:100px;
     }
     .reset-btn{
         background-color:#ff2222;
@@ -76,4 +85,16 @@
     }
 
 </style>
+<script>
+  $("#profilePic").on("change",
+    function(event){
+      let file = document.getElementById("profilePic").files[0];
+      let reader = new FileReader();
+      reader.onload = function(e){
+        document.getElementById("displayProfilePicTxt").value = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  );
+</script>
 </html>
