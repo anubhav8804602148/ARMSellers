@@ -7,6 +7,14 @@
     <title>ARMSeller | Roles</title>
 </head>
 <body>
+<div id="headNavigator">
+    <span class="navbarItem"><a href="/">ARM Seller</a></span>
+    <span class="navbarItem"><a href="/home">Home</a></span>
+    <span class="navbarItem"><a href="/login">Login</a></span>
+    <span class="navbarItem"><a href="/registerUser">Register</a></span>
+    <span class="navbarItem"><a href="/rolesManager">RolesManager</a></span>
+    <span class="navbarItem"><a href="/catalog">Catalog</a></span>
+</div>
     <table id="roleManagerTable">
         <tr class="manager-row">
             <td class="manager-cell">
@@ -70,6 +78,28 @@
 <script>
 </script>
 <style>
+    #headNavigator{
+        position:absolute;
+        top:0px;
+        left:0px;
+        background-color:#aaaaaa;
+        padding:1%;
+        width:100%;
+
+    }
+    .navbarItem{
+        height:100%;
+    }
+    a{
+        text-decoration-line: none;
+        color:black;
+        margin-left:1%;
+        margin-right:1%;
+        height:100%;
+    }
+    a:hover{
+        color:white;
+    }
     #allRolesTable{
         position:relative;
         top:0px;
@@ -93,7 +123,7 @@
     }
     #roleManagerTable{
         position:absolute;
-        top:0px;
+        top:10%;
         left:0px;
         width:100%;
     }

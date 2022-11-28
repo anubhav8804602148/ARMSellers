@@ -1,8 +1,10 @@
 package com.arm.seller.service;
 
+import com.arm.seller.models.ProductDetails;
 import com.arm.seller.repositories.ProductRepository;
 import com.arm.seller.entities.Product;
 import com.arm.seller.exceptions.ProductException.*;
+import com.arm.seller.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ public class ProductService {
     @Autowired
     ProductRepository productRepo;
 
+    @Autowired
+    UserRepository userRepo;
 
     public Product findProductById(long id) {
         return productRepo.findProductById(id);
@@ -66,5 +70,20 @@ public class ProductService {
         newProduct.setBatchNumber(product.getBatchNumber());
         newProduct.setPrice(product.getPrice());
         return productRepo.save(newProduct);
+    }
+
+    public ProductDetails productToProductDetails(Product product){
+        ProductDetails productDetails = new ProductDetails();
+        productDetails.setName(product.getName());
+        productDetails.setSellerName(userRepo.findById(product.getSellerId()).get().getFullName());
+        productDetails.setBatchNumber(product.getBatchNumber());
+        productDetails.setDescription(product.getDescription());
+        productDetails.setExpiryDate(product.getExpiryDate());
+        productDetails.setMfgDate(product.getMfgDate());
+        productDetails.setPrice(product.getPrice());
+        productDetails.setId(product.getId());
+        productDetails.setSellerId(product.getSellerId());
+        productDetails.setQuantity(product.getQuantity());
+        return productDetails;
     }
 }

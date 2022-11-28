@@ -1,10 +1,12 @@
 package com.arm.seller.models;
 
+import com.arm.seller.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.sql.Date;
 import java.time.LocalDate;
 
 public class ProductDetails {
-
     private long id;
     private String name;
     private String description;
@@ -14,6 +16,15 @@ public class ProductDetails {
     private int quantity;
     private long batchNumber;
     private double price;
+    private String sellerName;
+
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+    }
 
     public long getId() {
         return id;

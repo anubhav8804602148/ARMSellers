@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/images/ArmsIcon.png">
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <title>ARMSeller | Home</title>
+    <title>ARMSeller </title>
 </head>
 <body>
 <div id="headNavigator">
@@ -15,16 +15,16 @@
     <span class="navbarItem"><a href="/rolesManager">RolesManager</a></span>
     <span class="navbarItem"><a href="/catalog">Catalog</a></span>
 </div>
-    <div id="headMsg">
-        Welcome to my demo app!!<br>
-        <div th:if="${known}">
-            <p th:text="${name}"></p>
-        </div><br>
-        <div th:unless="${known}">
-            Ahh . . . What was your name again??<br><br>
-            <input id="userName" type="text">
-        </div>
+<div id="headMsg">
+    Welcome to my demo app!!<br>
+    <div th:if="${known}">
+        <p th:text="${name}"></p>
+    </div><br>
+    <div th:unless="${known}">
+        Ahh . . . What was your name again??<br><br>
+        <input id="userName" type="text">
     </div>
+</div>
 </body>
 <script>
     $("#userName").on('keypress',

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/images/ArmsIcon.png">
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <title>ARMSeller | Home</title>
+    <title>ARMSeller | Catalog</title>
 </head>
 <body>
 <div id="headNavigator">
@@ -15,27 +15,34 @@
     <span class="navbarItem"><a href="/rolesManager">RolesManager</a></span>
     <span class="navbarItem"><a href="/catalog">Catalog</a></span>
 </div>
-    <div id="headMsg">
-        Welcome to my demo app!!<br>
-        <div th:if="${known}">
-            <p th:text="${name}"></p>
-        </div><br>
-        <div th:unless="${known}">
-            Ahh . . . What was your name again??<br><br>
-            <input id="userName" type="text">
-        </div>
-    </div>
+    <table id="catalogTable">
+        <thead>
+            <tr>
+                <td>Product Id</td><td>Name</td><td>Description</td><td>Seller</td><td>Mfg. Date</td><td>Expiry Date</td><td>Price</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${allProducts}">
+                <td><span th:text="${product.id}"></span></td>
+                <td><span th:text="${product.name}"></span></td>
+                <td><span th:text="${product.description}"></span></td>
+                <td><span th:text="${product.sellerName}"></span></td>
+                <td><span th:text="${product.mfgDate}"></span></td>
+                <td><span th:text="${product.expiryDate}"></span></td>
+                <td><span th:text="${product.price}"></span></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
-<script>
-    $("#userName").on('keypress',
-        function(e){
-            if(e.which==13){
-                document.location = "home?name="+$("#userName").val();
-            }
-        }
-    );
-</script>
 <style>
+        #catalogTable{
+            position:absolute;
+            top:10%;
+            width:100%;
+        }
+        td,tr{
+            border: 1px solid black;
+        }
         #headNavigator{
 			position:absolute;
 			top:0px;
@@ -63,16 +70,10 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
-        #userName{
-
-        }
         #headMsg{
             position:absolute;
             top:30%;
-            left:40%;
+            left:30%;
         }
-        #askName{
-            display:none;
-        }
-</style>
+    </style>
 </html>

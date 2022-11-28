@@ -74,4 +74,9 @@ public class ApplicationController {
         userService.createNewUser(user);
         return "redirect:/login";
     }
+
+    @GetMapping("/")
+    public String rootPage(){
+        return "root";
+    }
 }
