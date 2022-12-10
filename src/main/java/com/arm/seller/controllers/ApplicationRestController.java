@@ -8,12 +8,14 @@ import com.arm.seller.repositories.RoleRepository;
 import com.arm.seller.repositories.UserRepository;
 import com.arm.seller.service.NumberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Collections;
 
+@CrossOrigin( origins="*",maxAge =3600)
 @RestController
 public class ApplicationRestController {
 
@@ -22,10 +24,17 @@ public class ApplicationRestController {
 
     @Autowired
     AuthorityRepository authorityRepository;
+    
     @Autowired
     UserRepository userRepository;
+    
     @Autowired
     RoleRepository roleRepository;
+    
+    @Autowired
+    AuthenticationManager authenticationManager;
+    
+    
 
     @GetMapping("/getNaturalNumbers")
     public int[] getNaturalNumbers(){
@@ -46,6 +55,8 @@ public class ApplicationRestController {
     public String getSquareRoot(@RequestParam("num") int num){
         return Double.toString(Math.sqrt(num));
     }
+    
+    
 
     @GetMapping(value = "/createDefaultRolesAndUser")
     public String createDefaultRolesAndUser(){

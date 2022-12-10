@@ -5,6 +5,8 @@ import com.arm.seller.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,6 +23,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     CustomAuthenticationProvider customAuthenticationProvider;
 
     @Bean
+    public AuthTokenFilter authenticationJwtTokenFilter() {
+    	return new AuthTokenFilter();
+    }
+    
+    @Override
+    @Bean
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService();
     }
@@ -30,6 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationManager authManager(HttpSecurity http, AuthenticationProvider customAuthProvider) throws Exception {
+    	AuthenticationManagerBuilder authBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+    	authBuilder.authenticationProvider(customAuthProvider);
+    	return authBuilder.build();
+    }
+    
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -42,6 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder){
         authenticationManagerBuilder.authenticationProvider(daoAuthenticationProvider());
     }
+    
 
     @Override
     public void configure(HttpSecurity http) throws Exception{
@@ -64,6 +80,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutSuccessUrl("/login").permitAll();
 
     }
-
-
 }

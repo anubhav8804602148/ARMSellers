@@ -74,6 +74,7 @@ public class ProductService {
 
     public ProductDetails productToProductDetails(Product product){
         ProductDetails productDetails = new ProductDetails();
+        if(!userRepo.findById(product.getSellerId()).isPresent()) return productDetails;
         productDetails.setName(product.getName());
         productDetails.setSellerName(userRepo.findById(product.getSellerId()).get().getFullName());
         productDetails.setBatchNumber(product.getBatchNumber());

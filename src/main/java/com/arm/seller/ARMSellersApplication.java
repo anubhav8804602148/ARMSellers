@@ -7,7 +7,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class ARMSellersApplication {
 	public static void main(String[] args) {
-		ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(ARMSellersApplication.class, args);
-
+		SpringApplication.run(ARMSellersApplication.class, args);
 	}
 }
